@@ -98,13 +98,12 @@ function Base.show(io::IO, ::MIME"text/html", A::Samples)
     print(io, string(A))
 end
 
-
 function SampleArray(dims::Int...; type::Type=Float64)
-arr = Array{Samples{type}}(undef, dims...)
-for idx in eachindex(arr)
-    arr[idx] = Samples{type}()
-end
-return arr
+    arr = Array{Samples{type}}(undef, dims...)
+    for idx in eachindex(arr)
+        arr[idx] = Samples{type}()
+    end
+    return arr
 end
 
 function Base.getproperty(s::Samples, prop::Symbol)
